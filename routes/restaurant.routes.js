@@ -2,7 +2,7 @@ const express = require('express');
 const router = express.Router();
 const Restaurant = require('../models/Restaurant.model')
 const Review = require('../models/Review.model')
-
+const User = require('../models/User.model')
 
    
 
@@ -10,8 +10,10 @@ router.get('/restaurants/:id', (req, res, next) => {
     const {id} = req.params;
     Restaurant.findById(id)
     .populate("Review")
+    // .populate("User")
     .then((restaurantFromDb) => {
-        console.log(restaurantFromDb);
+        Review.populate();
+        console.log(restaurantFromDb)
         res.render("restaurants/restaurant-page", restaurantFromDb)
     })
     .catch( e => {

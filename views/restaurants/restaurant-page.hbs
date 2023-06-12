@@ -12,7 +12,11 @@
 <p>{{Cuisine}}</p>
 
 {{#each Review}}
+   <div>
     <p>{{this.title}}</p>
+    <p>{{this.username}}</p>
+    <p>{{this.comment}}</p>
+    </div>
 {{/each}}
 <a href="/restaurants/{{_id}}/review">CLICK TO REVIEW</a>
 

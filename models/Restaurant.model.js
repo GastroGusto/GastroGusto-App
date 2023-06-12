@@ -1,5 +1,6 @@
 const { mongoose, Schema, model } = require("mongoose");
 
+
 const gastroSchema = new Schema(
     {
         Name: String,
