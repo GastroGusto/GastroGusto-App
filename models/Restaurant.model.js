@@ -1,20 +1,23 @@
-const { Schema, model } = require("mongoose");
+const { mongoose, Schema, model } = require("mongoose");
 
 const gastroSchema = new Schema(
     {
-        name: String,
-        address: String,
-        location: String,
-        price: String,
-        cuisine: String,
-        longitude: String,
-        latitude: String,
-        phoneNumber: String,
-        url: String, 
-        websiteUrl: String,
-        award: String,
-        facilitiesAndServices: String,
-
+        Name: String,
+        Address: String,
+        Location: String,
+        Price: String,
+        Cuisine: String,
+        Longitude: String,
+        Latitude: String,
+        PhoneNumber: String,
+        Url: String, 
+        WebsiteUrl: String,
+        Award: String,
+        FacilitiesAndServices: String,
+        Review: [{
+            type: mongoose.Schema.Types.ObjectId,
+            ref: "Review"
+        }]
     }
 )
 module.exports = model('Restaurant', gastroSchema)

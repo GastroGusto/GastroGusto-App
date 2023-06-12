@@ -1,15 +1,19 @@
-<h1>{{this.name}}</h1>
+<h1>{{this.Name}}</h1>
 
 <hr />
 
-<h3>Author:</h3>
-<p>{{address}}</p>
+<h3>Address:</h3>
+<p>{{Address}}</p>
 
-<h3>Description:</h3>
-<p>{{price}}</p>
+<h3>Price:</h3>
+<p>{{Price}}</p>
 
-<h3>Rating:</h3>
-<p>{{cuisine}}</p>
+<h3>Cuisine:</h3>
+<p>{{Cuisine}}</p>
 
+{{#each Review}}
+    <p>{{this.title}}</p>
+{{/each}}
+<a href="/restaurants/{{_id}}/review">CLICK TO REVIEW</a>
 
 
