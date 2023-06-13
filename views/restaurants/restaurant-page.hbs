@@ -1,4 +1,5 @@
 <h1>{{this.Name}}</h1>
+<p>restaurant id: {{_id}}</p>
 
 <hr />
 
@@ -11,13 +12,21 @@
 <h3>Cuisine:</h3>
 <p>{{Cuisine}}</p>
 
+<a href="/restaurants/{{_id}}/review">CLICK TO REVIEW</a>
+
 {{#each Review}}
    <div>
-    <p>{{this.title}}</p>
-    <p>{{this.username}}</p>
-    <p>{{this.comment}}</p>
+    <p>Title: {{title}}</p>
+    <p>Username: {{username.username}}</p>
+    <p>Details: {{comment}}</p>
+    <p>Rating: {{rating}}</p>
+    <p>Id: {{_id}}</p>
+    <a href="/restaurants/reviews/{{_id}}">Edit Review</a>
+        <form action="/restaurants/reviews/{{_id}}/delete" method="POST">
+            <button>Delete</button>
+            </form>
     </div>
 {{/each}}
-<a href="/restaurants/{{_id}}/review">CLICK TO REVIEW</a>
+
 
 

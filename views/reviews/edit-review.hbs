@@ -1,0 +1,18 @@
+
+<h2>Edit the review: {{title}}</h2>
+
+<form method="POST" action="/restaurants/reviews/{{_id}}">
+    <label> Title:
+        <input type="text" name="title" value="{{title}}" required/>
+    </label>
+
+    <label> Comment:
+        <textarea cols="30" rows="4" name="comment" required>{{comment}}</textarea>
+    </label>
+
+    <label> Rating:
+        <input type="range" name="rating" min="1" max="5" step="1" value="{{rating}}" />
+    </label>
+
+    <button>Save changes</button>
+</form>
