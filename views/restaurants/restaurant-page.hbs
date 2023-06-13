@@ -22,6 +22,9 @@
     <p>Rating: {{rating}}</p>
     <p>Id: {{_id}}</p>
     <a href="/restaurants/reviews/{{_id}}">Edit Review</a>
+        <form action="/restaurants/reviews/{{_id}}/delete" method="POST">
+            <button>Delete</button>
+            </form>
     </div>
 {{/each}}
 
