@@ -14,6 +14,7 @@ const User = require("../models/User.model");
 // Require necessary (isLoggedOut and isLiggedIn) middleware in order to control access to specific routes
 const isLoggedOut = require("../middleware/isLoggedOut");
 const isLoggedIn = require("../middleware/isLoggedIn");
+const hasAccess = require('../middleware/hasAccess');
 
 // GET /auth/signup
 router.get("/signup", isLoggedOut, (req, res) => {
@@ -134,7 +135,7 @@ router.post("/login", isLoggedOut, (req, res, next) => {
           // Remove the password field
           delete req.session.currentUser.password;
 
-          res.redirect("/");
+          res.redirect("/auth/profile");
         })
         .catch((err) => next(err)); // In this case, we send error handling to the error handling middleware.
     })
@@ -151,6 +152,14 @@ router.get("/logout", isLoggedIn, (req, res) => {
 
     res.redirect("/");
   });
+});
+ 
+//User profile page
+router.get('/profile', (req, res) => {
+
+  req.session.currentUser
+
+   res.render("auth/profile", {userDetails: req.session.currentUser});
 });
 
 module.exports = router;

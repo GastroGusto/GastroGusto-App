@@ -1,0 +1,8 @@
+
+{{#if userDetails}}
+    <p>This is {{userDetails.username}}'s Page!</p>
+     <a href="/restaurants/64871918ea8142d510e0e8ef">TEST RESTAURANT</a>
+    {{else}}
+    <p>You are not logged in!</p>
+    <p>Click <a href="/auth/login">here</a> to login</p>
+    {{/if}}

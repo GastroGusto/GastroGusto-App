@@ -2,6 +2,8 @@ const express = require('express');
 const router = express.Router();
 const Restaurant = require('../models/Restaurant.model');
 const reviewModel = require('../models/Review.model');
+const isLoggedIn = require('../middleware/isLoggedIn');
+const hasAccess = require('../middleware/hasAccess');
 const User = require('../models/User.model');
 const ObjectId = require('mongoose').ObjectId;
 
@@ -25,7 +27,7 @@ router.get('/restaurants/:id', (req, res, next) => {
 		});
 });
 
-router.get('/restaurants/:id/review', (req, res, next) => {
+router.get('/restaurants/:id/review', isLoggedIn, (req, res, next) => {
 	const { id } = req.params;
 	console.log(req.session);
 	Restaurant.findById(id)
@@ -38,7 +40,7 @@ router.get('/restaurants/:id/review', (req, res, next) => {
 		});
 });
 
-router.post('/restaurants/:id/review', (req, res, next) => {
+router.post('/restaurants/:id/review', isLoggedIn, (req, res, next) => {
 	const { id } = req.params;
 	const newReview = {
 		title: req.body.title,
@@ -61,24 +63,28 @@ router.post('/restaurants/:id/review', (req, res, next) => {
 		});
 });
 //find review by id
-router.get('/restaurants/reviews/:reviewid', (req, res, next) => {
+router.get('/restaurants/reviews/:reviewid', isLoggedIn, (req, res, next) => {
 	const { reviewid } = req.params;
 	reviewModel
 		.findById(reviewid)
+		.populate('username')
 		.then((value) => {
+			if(req.session.currentUser.username === value.username.username) {
+				console.log("TEST")
+			}
+			else{
 			res.render('reviews/edit-review', value);
+			}
 		})
-
 		.catch((e) => {
 			console.log('error getting restaurant details from DB', e);
 		});
 });
 
 //process form
-router.post('/restaurants/reviews/:reviewid', (req, res, next) => {
+router.post('/restaurants/reviews/:reviewid', isLoggedIn, (req, res, next) => {
 	const { reviewid } = req.params;
 	const { title, comment, rating } = req.body;
-
 	reviewModel
 		.findByIdAndUpdate(reviewid, { title, comment, rating }, { new: true })
 		.then((value) => {
@@ -91,7 +97,7 @@ router.post('/restaurants/reviews/:reviewid', (req, res, next) => {
 		.catch((error) => next(error));
 });
 
-router.post('/restaurants/reviews/:reviewid/delete', (req, res, next) => {
+router.post('/restaurants/reviews/:reviewid/delete', isLoggedIn, (req, res, next) => {
 	const { reviewid } = req.params;
 	reviewModel.findByIdAndDelete(reviewid).then((value) => {
 		Restaurant.findOne({ Review: { $in: [value._id] } })
