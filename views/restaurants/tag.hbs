@@ -1,18 +1,18 @@
-{{#each data}}
-	<h1>{{this.Name}}</h1>
-	<p>restaurant id: {{_id}}</p>
-
-	<hr />
-
-	<h3>Address:</h3>
-	<p>{{Address}}</p>
-
-	<h3>Price:</h3>
-	<p>{{Price}}</p>
-
-	<h3>Cuisine:</h3>
-	<p>{{Cuisine}}</p>
-
-	<a href='/restaurants/{{_id}}/review'>CLICK TO REVIEW</a>
-
-{{/each}}
+<div class='container-fluid text-center ml-0'>
+	<div class='row'>
+		{{#each data}}
+			<div class='card width 100 col-12 col-md-3 m-3'>
+				<div class='card-body'>
+					<h4 class='card-title'>{{Name}}</h4>
+					<h5 class='card-title'>{{Award}}</h5>
+					<h6 class='card-subtitle mb-2 text-body-secondary'>Cusine:
+						{{Cuisine}}</h6>
+					<p class='card-text'>Price: {{Location}}</p>
+					<p class='card-text'>Location: {{Location}}</p>
+					<a href='/restaurants/{{_id}}' class='card-link'>More Details</a>
+					<a href='{{WebsiteUrl}}' class='card-link'>Official Website</a>
+				</div>
+			</div>
+		{{/each}}
+	</div>
+</div>
