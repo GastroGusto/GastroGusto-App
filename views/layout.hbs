@@ -9,9 +9,9 @@
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet"
     integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM" crossorigin="anonymous">
 </head>
-<div class="container .bg-lighten-xl">
 
-  <nav class="navbar navbar-expand-lg bg-body-tertiary">
+<body>
+  <nav class="navbar navbar-expand-lg navbar-dark" style="background-color: #0a4275;">
     <div class="container-fluid">
       <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" #navbarNav>
         <span class="navbar-toggler-icon"></span>
@@ -37,18 +37,38 @@
         </ul>
         <form class="d-flex" role="search">
           <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
-          <button class="btn btn-outline-success" type="submit">Search</button>
+          <button class="btn btn-outline-light" type="submit">Search</button>
         </form>
       </div>
   </nav>
 
+
+
   {{{body}}}
 
-  <script src="/js/script.js"></script>
-  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"
-    integrity="sha384-geWF76RCwLtnZ8qwWowPQNguL3RmwHVBC9FhGdlKrxdiJJigb/j/68SIy3Te4Bkz"
-    crossorigin="anonymous"></script>
-</div>
+  <br>
+  <section class="">
+    <footer class="text-center text-white" style="background-color: #0a4275;">
+      <div class="container p-4 pb-0">
+        <section class="">
+          <p class="d-flex justify-content-center align-items-left">
+            <span class="me-3">Emily's Fav Restaurant</span>
+            <a type="button" class="btn btn-outline-light btn-rounded" href="https://www.instagram.com/pipatthecarriage">Pips</a>
+          </p>
+        </section>
+        <section class="">
+          <p class="d-flex justify-content-center align-items-center">
+            <span class="me-3">Register for free</span>
+            <a type="button" class="btn btn-outline-light btn-rounded" href="/auth/signup">Sign up!</a>
+          </p>
+        </section>
+      </div>
+      <div class="text-center p-3" style="background-color: rgba(0, 0, 0, 0.2);">
+        © 2020 Copyright:
+        <a class="text-white" href="https://guide.michelin.com/gb/en">guide.michelin.com</a>
+      </div>
+    </footer>
+  </section>
 </body>
 
 </html>

@@ -59,7 +59,7 @@
       </li>
 </ul>
 <br>
-<a href="/restaurants/{{_id}}/review" type="button" class="btn btn-primary">Review</a>
+<a href="/restaurants/{{_id}}/review" type="button" class="btn btn-dark" style="background-color: #0a4275;" text="white">Review</a>
 
 <br>
 <hr>
@@ -67,16 +67,16 @@
     <div class="row">
         {{#each Review}}
         <div id="card" class="card width 100 col-12 col-md-3 text-bg-light">
-            <div class="card-header">
+            <div class="card-header text-bg-light">
                 <h3>{{title}}</h3>
             </div>
             <ul class="list-group list-group-flush">
               <li class="card-text">{{comment}}</li>
                 <li>Review created by: {{username.username}}</li>
                 <li>Rating: {{rating}}</li>
-                <li><a href="/restaurants/reviews/{{_id}}" type="button" class="btn btn-light">Edit Review</a></li>
+                <li><a href="/restaurants/reviews/{{_id}}" type="button" class="btn btn-dark" style="background-color: #0a4275;">Edit Review</a></li>
                 <form action="/restaurants/reviews/{{_id}}/delete" method="POST">
-                    <button type="button" class="btn btn-light"> Delete</button>
+                    <button class="btn btn-dark" style="background-color: #0a4275;"> Delete</button>
                 </form>
             </ul>
         </div>

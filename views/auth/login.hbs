@@ -1,28 +1,42 @@
 <div id="login-form">
-  <h2>Log In</h2>
-  <form action="/auth/login" method="POST">
+    <section class="vh-100">
+      <div class="container py-5 h-100">
+        <div class="row d-flex align-items-center justify-content-center h-100">
+          <div class="col-md-8 col-lg-7 col-xl-6">
+            <img src="https://pbs.twimg.com/profile_images/1115632604626259973/kMoP8dTJ_400x400.png" class="img-fluid" alt="Michelin image">
+          </div>
+          <div class="col-md-7 col-lg-5 col-xl-5 offset-xl-1">
+            <form action="/auth/login" method="POST">
+              <!-- Email input -->
+              <div class="form-outline mb-4">
+                <input type="text" name="username" placeholder="Your username" class="form-control form-control-lg"
+                  placeholder="Your email" />
+                <label class="form-label"></label>
+              </div>
 
-    <label> Username
-      <input type="text" name="username" placeholder="Your username" />
-    </label>
+              <div class="form-outline mb-4">
+                <input type="email" id="form1Example13" name="email" class="form-control form-control-lg"
+                  placeholder="Your email" />
+                <label class="form-label" for="form1Example13"></label>
+              </div>
 
-    <label> Email
-      <input type="email" name="email" placeholder="Your email" />
-    </label>
+              <!-- Password input -->
+              <div class="form-outline mb-4">
+                <input type="password" id="form1Example23" name="password" placeholder="Your password"
+                  class="form-control form-control-lg" />
+                <label class="form-label" for="form1Example23"></label>
+              </div>
 
-    <label> Password
-      <input type="password" name="password" placeholder="Your password" />
-    </label>
-
-    <button type="submit">Log In</button>
-
-    <br>
-    <p>Not got an account?</p>
-    <a href="/auth/signup">Sign up</a>
-
+              <!-- Submit button -->
+              <button type="submit" class="btn btn-primary btn-lg btn-block">Sign in</button>
+            </form>
+          </div>
+        </div>
+      </div>
+    </section>
 
     {{#if errorMessage}}
-      <p class="error">{{errorMessage}}</p>
+    <p class="error">{{errorMessage}}</p>
     {{/if}}
   </form>
 </div>
