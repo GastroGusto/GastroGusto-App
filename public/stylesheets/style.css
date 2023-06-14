@@ -10,3 +10,37 @@ a {
 h1 {
   color: 15px;
 }
+ul{
+  list-style-type: none;
+}
+nav {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  padding-top: 1rem;
+  margin-bottom: 3rem;
+}
+
+nav a {
+  padding: 0 1rem;
+  border-right: 1px solid #3788d4;
+}
+
+nav a:last-child {
+  border-right: none;
+}
+
+.warning {
+  padding: 1rem;
+  font-weight: bold;
+  border: 1px solid rgb(255, 213, 135);
+  background-color: rgb(255, 213, 135);
+}
+
+.btn{
+  margin: 0.3rem;
+}
+.card{
+  border-width: 0;
+}
+
