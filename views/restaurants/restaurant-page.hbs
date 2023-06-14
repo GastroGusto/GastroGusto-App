@@ -1,90 +1,83 @@
 <div>
-<h1>{{this.Name}}</h1>
+  <h1>{{this.Name}}</h1>
 </div>
-<hr/>
+<hr />
 <ul class="list-group list-group-flush">
   <li class="list-group-item d-flex justify-content-between align-items-start">
     <div class="ms-2 me-auto">
       <div class="fw-bold">Address:</div>
-        {{Address}}
-        </div>
-        </li>
+      {{Address}}
+    </div>
+  </li>
   <li class="list-group-item d-flex justify-content-between align-items-start">
     <div class="ms-2 me-auto">
       <div class="fw-bold">Location:</div>
-       {{Location}}
-       </div>
-       </li>
-<li class="list-group-item d-flex justify-content-between align-items-start">
+      {{Location}}
+    </div>
+  </li>
+  <li class="list-group-item d-flex justify-content-between align-items-start">
     <div class="ms-2 me-auto">
       <div class="fw-bold">Price:</div>
       {{Price}}
-      </div>
-      </li>
-<li class="list-group-item d-flex justify-content-between align-items-start">
+    </div>
+  </li>
+  <li class="list-group-item d-flex justify-content-between align-items-start">
     <div class="ms-2 me-auto">
       <div class="fw-bold">Cuisine:</div>
       {{Cuisine}}
-      </div>
-      </li>
-<li class="list-group-item d-flex justify-content-between align-items-start">
+    </div>
+  </li>
+  <li class="list-group-item d-flex justify-content-between align-items-start">
     <div class="ms-2 me-auto">
       <div class="fw-bold">Phone Number:</div>
-        {{PhoneNumber}}
-        </div>
-        </li>
-<li class="list-group-item d-flex justify-content-between align-items-start">
+      {{PhoneNumber}}
+    </div>
+  </li>
+  <li class="list-group-item d-flex justify-content-between align-items-start">
     <div class="ms-2 me-auto">
       <div class="fw-bold">Website:</div>
-        {{WebsiteUrl}}
-        </div>
-        </li>
-<li class="list-group-item d-flex justify-content-between align-items-start">
+      {{WebsiteUrl}}
+    </div>
+  </li>
+  <li class="list-group-item d-flex justify-content-between align-items-start">
     <div class="ms-2 me-auto">
       <div class="fw-bold">Award:</div>
-        {{Award}}
-      </div>
-      </li>
-<li class="list-group-item d-flex justify-content-between align-items-start">
+      {{Award}}
+    </div>
+  </li>
+  <li class="list-group-item d-flex justify-content-between align-items-start">
     <div class="ms-2 me-auto">
       <div class="fw-bold">Facilities and Services:</div>
       {{FacilitiesAndServices}}
-      </div>
-      </li>
-<li class="list-group-item d-flex justify-content-between align-items-start">
-    <div class="ms-2 me-auto">
-      <div class="fw-bold">Cuisine:</div>
-      {{Cuisine}}
-      </div>
-      </li>
+    </div>
+  </li>
 </ul>
 <br>
-<a href="/restaurants/{{_id}}/review" type="button" class="btn btn-dark" style="background-color: #0a4275;" text="white">Review</a>
+<a href="/restaurants/{{_id}}/review" type="button" class="btn btn-dark" style="background-color: #0a4275;"
+  text="white">Review</a>
 
 <br>
 <hr>
-   <div class="container-fluid text-center ml-0">
-    <div class="row">
-        {{#each Review}}
-        <div id="card" class="card width 100 col-12 col-md-3 text-bg-light">
-            <div class="card-header text-bg-light">
-                <h3>{{title}}</h3>
-            </div>
-            <ul class="list-group list-group-flush">
-              <li class="card-text">{{comment}}</li>
-                <li>Review created by: {{username.username}}</li>
-                <li>Rating: {{rating}}</li>
-                <li><a href="/restaurants/reviews/{{_id}}" type="button" class="btn btn-dark" style="background-color: #0a4275;">Edit Review</a></li>
-                <form action="/restaurants/reviews/{{_id}}/delete" method="POST">
-                    <button class="btn btn-dark" style="background-color: #0a4275;"> Delete</button>
-                </form>
-            </ul>
+<div class="container text-center">
+  <div class="row">
+
+    <!-- product one -->
+    {{#each Review}}
+    <div class="product col-12 col-md-4">
+      <div class="card">
+        <div class="card-header">
+          <h3>{{title}}</h3>
+          <div class="card-body">
+            <h5 class="card-title text-center">Reviewed by: {{username.username}}</h5>
+            <p class="card-text text-center">{{comment}}</p>
+            <p class="card-text text-center">Rating: {{rating}}</p>
+            <a href="/restaurants/reviews/{{_id}}" type="button text center" class="btn btn-dark"
+              style="background-color: #0a4275;">Edit Review</a>
+            <form action="/restaurants/reviews/{{_id}}/delete" method="POST">
+              <button class="btn btn-dark" style="background-color: #0a4275;">Delete</button>
+            </form>
+          </div>
         </div>
-        {{/each}}
+      </div>
     </div>
-</div>
-
-
-
-
-
+    {{/each}}
