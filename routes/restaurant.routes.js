@@ -103,17 +103,33 @@ router.post('/restaurants/reviews/:reviewid', isLoggedIn, (req, res, next) => {
 
 router.post('/restaurants/reviews/:reviewid/delete', isLoggedIn, (req, res, next) => {
 	const { reviewid } = req.params;
-	reviewModel.findByIdAndDelete(reviewid).then((value) => {
-		Restaurant.findOne({ Review: { $in: [value._id] } })
-			.then((restaurantFound) => {
-				return Restaurant.findByIdAndUpdate(restaurantFound._id, {
-					$pull: { Review: reviewid },
-				});
-			})
-			.then((restaurantFound) => {
-				res.redirect(`/restaurants/${restaurantFound._id}`);
-			});
+	reviewModel.findById(reviewid)
+	.populate('username')
+	.then((value) => {
+		if (req.session.currentUser.username === value.username.username){
+			reviewModel.findByIdAndDelete(reviewid).then((value) => {
+				Restaurant.findOne({ Review: { $in: [value._id] } })
+					.then((restaurantFound) => {
+						return Restaurant.findByIdAndUpdate(restaurantFound._id, {
+							$pull: { Review: reviewid },
+						});
+					})
+					.then((restaurantFound) => {
+						res.redirect(`/restaurants/${restaurantFound._id}`);
+					});
+			});	
+		}
+		else {
+			Restaurant.findOne({ Review: { $in: [value._id] } })
+				.then(
+					(restaurantFound) => {
+						res.redirect(`/restaurants/${restaurantFound._id}`);
+					})
+		}
+	})
+	.catch((e) => {
+		console.log('error getting restaurant details from DB', e);
 	});
-});
+})
 
 module.exports = router;
