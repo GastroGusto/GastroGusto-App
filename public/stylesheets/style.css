@@ -1,6 +1,7 @@
 body {
   padding: 50px;
   font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
+  background-color: #ffcdab;
 }
 
 a {
@@ -8,5 +9,41 @@ a {
 }
 
 h1 {
+  margin-left: 0.3em;
   color: 15px;
 }
+ul{
+  list-style-type: none;
+}
+nav {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  padding-top: 1rem;
+  margin-bottom: 3rem;
+}
+
+nav a {
+  padding: 0 1rem;
+  border-right: 1px solid #48759e;
+}
+
+nav a:last-child {
+  border-right: none;
+}
+
+.warning {
+  padding: 1rem;
+  font-weight: bold;
+  border: 1px solid rgb(255, 213, 135);
+  background-color: rgb(255, 213, 135);
+}
+
+.btn{
+  margin: 0.3rem;
+}
+.card{
+  border-width: 0;
+  background-image: linear-gradient(315deg, #ffffff 0%, #ddebbe 74%);
+}
+
