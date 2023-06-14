@@ -69,11 +69,15 @@ router.get('/restaurants/reviews/:reviewid', isLoggedIn, (req, res, next) => {
 		.findById(reviewid)
 		.populate('username')
 		.then((value) => {
-			if(req.session.currentUser.username === value.username.username) {
-				console.log("TEST")
+			if (req.session.currentUser.username !== value.username.username) {
+				Restaurant.findOne({ Review: { $in: [value._id] } })
+				.then(
+					(restaurantFound) => {
+						res.redirect(`/restaurants/${restaurantFound._id}`);
+					})
 			}
-			else{
-			res.render('reviews/edit-review', value);
+			else {
+				res.render('reviews/edit-review', value);
 			}
 		})
 		.catch((e) => {
