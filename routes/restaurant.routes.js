@@ -32,7 +32,7 @@ router.get('/restaurants/:id/review', isLoggedIn, (req, res, next) => {
 	Restaurant.findById(id)
 		.populate('Review')
 		.then((value) => {
-			res.render('restaurants/review', value);
+			res.render('reviews/review', value);
 		})
 		.catch((e) => {
 			console.log('error getting restaurant details from DB', e);

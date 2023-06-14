@@ -31,9 +31,7 @@ nav a {
 nav a:last-child {
   border-right: none;
 }
-p {
-  margin-left: 1em;
-}
+
 
 .warning {
   padding: 1rem;
