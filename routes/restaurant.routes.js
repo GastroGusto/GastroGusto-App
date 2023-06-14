@@ -70,13 +70,12 @@ router.get('/restaurants/reviews/:reviewid', isLoggedIn, (req, res, next) => {
 		.populate('username')
 		.then((value) => {
 			if (req.session.currentUser.username !== value.username.username) {
-				Restaurant.findOne({ Review: { $in: [value._id] } })
-				.then(
+				Restaurant.findOne({ Review: { $in: [value._id] } }).then(
 					(restaurantFound) => {
 						res.redirect(`/restaurants/${restaurantFound._id}`);
-					})
-			}
-			else {
+					}
+				);
+			} else {
 				res.render('reviews/edit-review', value);
 			}
 		})
@@ -101,35 +100,71 @@ router.post('/restaurants/reviews/:reviewid', isLoggedIn, (req, res, next) => {
 		.catch((error) => next(error));
 });
 
-router.post('/restaurants/reviews/:reviewid/delete', isLoggedIn, (req, res, next) => {
-	const { reviewid } = req.params;
-	reviewModel.findById(reviewid)
-	.populate('username')
-	.then((value) => {
-		if (req.session.currentUser.username === value.username.username){
-			reviewModel.findByIdAndDelete(reviewid).then((value) => {
-				Restaurant.findOne({ Review: { $in: [value._id] } })
-					.then((restaurantFound) => {
-						return Restaurant.findByIdAndUpdate(restaurantFound._id, {
-							$pull: { Review: reviewid },
-						});
-					})
-					.then((restaurantFound) => {
-						res.redirect(`/restaurants/${restaurantFound._id}`);
+router.post(
+	'/restaurants/reviews/:reviewid/delete',
+	isLoggedIn,
+	(req, res, next) => {
+		const { reviewid } = req.params;
+		reviewModel
+			.findById(reviewid)
+			.populate('username')
+			.then((value) => {
+				if (req.session.currentUser.username === value.username.username) {
+					reviewModel.findByIdAndDelete(reviewid).then((value) => {
+						Restaurant.findOne({ Review: { $in: [value._id] } })
+							.then((restaurantFound) => {
+								return Restaurant.findByIdAndUpdate(restaurantFound._id, {
+									$pull: { Review: reviewid },
+								});
+							})
+							.then((restaurantFound) => {
+								res.redirect(`/restaurants/${restaurantFound._id}`);
+							});
 					});
-			});	
-		}
-		else {
-			Restaurant.findOne({ Review: { $in: [value._id] } })
-				.then(
-					(restaurantFound) => {
-						res.redirect(`/restaurants/${restaurantFound._id}`);
-					})
-		}
-	})
-	.catch((e) => {
-		console.log('error getting restaurant details from DB', e);
-	});
-})
+				} else {
+					Restaurant.findOne({ Review: { $in: [value._id] } }).then(
+						(restaurantFound) => {
+							res.redirect(`/restaurants/${restaurantFound._id}`);
+						}
+					);
+				}
+			})
+			.catch((e) => {
+				console.log('error getting restaurant details from DB', e);
+			});
+	}
+);
+
+router.get('/restaurants/tag/:type/:resttag', (req, res, next) => {
+	const { resttag, type } = req.params;
+	const filterType = type.charAt(0).toUpperCase() + type.slice(1);
+	const filterTag = resttag.charAt(0).toUpperCase() + resttag.slice(1);
+
+	Restaurant.find({ [filterType]: filterTag })
+		.then((restaurantsFromDb) => {
+			res.render('restaurants/tag', { data: restaurantsFromDb });
+		})
+		.catch((e) => {
+			console.log('error getting restaurant details from DB', e);
+		});
+});
+
+router.get('/restaurants/filter/:type/', (req, res, next) => {
+	const { type } = req.params;
+	const filterType = type.charAt(0).toUpperCase() + type.slice(1);
+
+	Restaurant.find()
+		.distinct(filterType)
+		.then((restaurantsFromDb) => {
+			const restaurantObj = Object.fromEntries(
+				restaurantsFromDb.map((key) => [key, 0])
+			);
+			console.log(restaurantObj);
+			res.render('restaurants/unique-filter', restaurantObj);
+		})
+		.catch((e) => {
+			console.log('error getting restaurant details from DB', e);
+		});
+});
 
 module.exports = router;

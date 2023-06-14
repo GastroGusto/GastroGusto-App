@@ -1,0 +1,18 @@
+{{#each data}}
+	<h1>{{this.Name}}</h1>
+	<p>restaurant id: {{_id}}</p>
+
+	<hr />
+
+	<h3>Address:</h3>
+	<p>{{Address}}</p>
+
+	<h3>Price:</h3>
+	<p>{{Price}}</p>
+
+	<h3>Cuisine:</h3>
+	<p>{{Cuisine}}</p>
+
+	<a href='/restaurants/{{_id}}/review'>CLICK TO REVIEW</a>
+
+{{/each}}
