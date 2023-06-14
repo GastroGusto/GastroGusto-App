@@ -3,7 +3,6 @@ const router = express.Router();
 const Restaurant = require('../models/Restaurant.model');
 const reviewModel = require('../models/Review.model');
 const isLoggedIn = require('../middleware/isLoggedIn');
-const hasAccess = require('../middleware/hasAccess');
 const User = require('../models/User.model');
 const ObjectId = require('mongoose').ObjectId;
 

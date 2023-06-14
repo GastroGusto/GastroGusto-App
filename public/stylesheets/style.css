@@ -1,6 +1,7 @@
 body {
   padding: 50px;
   font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
+  background-color: #ffcdab;
 }
 
 a {
@@ -8,6 +9,7 @@ a {
 }
 
 h1 {
+  margin-left: 0.3em;
   color: 15px;
 }
 ul{
@@ -23,7 +25,7 @@ nav {
 
 nav a {
   padding: 0 1rem;
-  border-right: 1px solid #3788d4;
+  border-right: 1px solid #48759e;
 }
 
 nav a:last-child {
@@ -42,5 +44,6 @@ nav a:last-child {
 }
 .card{
   border-width: 0;
+  background-image: linear-gradient(315deg, #ffffff 0%, #ddebbe 74%);
 }
 

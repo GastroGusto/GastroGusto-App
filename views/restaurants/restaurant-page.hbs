@@ -1,4 +1,6 @@
+<div>
 <h1>{{this.Name}}</h1>
+</div>
 <hr/>
 <ul class="list-group list-group-flush">
   <li class="list-group-item d-flex justify-content-between align-items-start">
@@ -64,23 +66,25 @@
    <div class="container-fluid text-center ml-0">
     <div class="row">
         {{#each Review}}
-        <div class="card width 100 col-12 col-md-3">
+        <div id="card" class="card width 100 col-12 col-md-3 text-bg-light">
             <div class="card-header">
                 <h3>{{title}}</h3>
-                <p class="card-text">{{comment}}</p>
             </div>
             <ul class="list-group list-group-flush">
+              <li class="card-text">{{comment}}</li>
                 <li>Review created by: {{username.username}}</li>
                 <li>Rating: {{rating}}</li>
-                <li><a href="/restaurants/reviews/{{_id}}" type="button" class="btn btn-primary">Edit Review</a></li>
+                <li><a href="/restaurants/reviews/{{_id}}" type="button" class="btn btn-light">Edit Review</a></li>
                 <form action="/restaurants/reviews/{{_id}}/delete" method="POST">
-                    <button type="button" class="btn btn-danger"> Delete</button>
+                    <button type="button" class="btn btn-light"> Delete</button>
                 </form>
             </ul>
         </div>
         {{/each}}
     </div>
 </div>
+
+
 
 
 
