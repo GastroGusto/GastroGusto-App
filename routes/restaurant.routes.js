@@ -166,4 +166,22 @@ router.get('/restaurants/filter/:type/', (req, res, next) => {
 		});
 });
 
+router.get('/search', (req, res) => {
+	res.render('restaurants/search');
+});
+
+router.post('/search', (req, res) => {
+	const { search } = req.body;
+	const searchParam = new RegExp(search, 'i');
+	console.log(search);
+	Restaurant.find({ Name: { $regex: searchParam } })
+		.then((restaurantsFromDb) => {
+			console.log(restaurantsFromDb);
+			res.render('restaurants/search', restaurantsFromDb);
+		})
+		.catch((e) => {
+			console.log('error getting restaurant details from DB', e);
+		});
+});
+
 module.exports = router;
