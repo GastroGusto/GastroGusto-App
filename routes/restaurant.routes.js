@@ -99,10 +99,7 @@ router.post('/restaurants/reviews/:reviewid', isLoggedIn, (req, res, next) => {
 		.catch((error) => next(error));
 });
 
-router.post(
-	'/restaurants/reviews/:reviewid/delete',
-	isLoggedIn,
-	(req, res, next) => {
+router.post('/restaurants/reviews/:reviewid/delete', isLoggedIn, (req, res, next) => {
 		const { reviewid } = req.params;
 		reviewModel
 			.findById(reviewid)

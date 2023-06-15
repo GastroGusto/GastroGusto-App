@@ -1,22 +1,20 @@
 <div class="container">
 	<h3>Tell us how was your experience at this restaurant:</h3>
-	<form>
+	<form method="POST" action="/restaurants/{{_id}}/review">
 
 		<div class="form-outline mb-4">
-			<input type="text" placeholder="Title" id="form4Example1" class="form-control" />
+			<input type="text" name="title" placeholder="Title" id="form4Example1" class="form-control" />
 			<label class="form-label" for="form4Example1"></label>
 		</div>
 
-
-
 		<div class="form-outline mb-4">
-			<textarea class="form-control" placeholder="Comment" id="form4Example3" rows="4"></textarea>
+			<textarea class="form-control" name="comment" placeholder="Comment" id="form4Example3" rows="4"></textarea>
 			<label class="form-label" for="form4Example3"></label>
 		</div>
 
 		<div>
 			<label for="multi-range-field" class="form-label"></label>
-			<input id="multi10" type="range" class="multi-range" min="0" max="5" step="1" id="customRange3">
+			<input id="multi10" type="range" name="rating" class="multi-range" min="1" max="5" step="1" id="customRange3">
 		</div>
 
 

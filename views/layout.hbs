@@ -16,7 +16,7 @@
   <nav class="navbar navbar-expand-lg navbar-light">
     <img src="/images/bwlogo.png" width="100px">
     <div class="container-fluid">
-      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" #navbarNav>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
         <span class="navbar-toggler-icon"></span>
       </button>
       <div class="collapse navbar-collapse" id="navbarNav" aria-controls="navbarNav" aria-expanded="false"
@@ -25,8 +25,8 @@
           <li class="nav-item">
             <a class="nav-link active" aria-current="page" href="/" class="text-info">Home</a>
           </li>
-         {{#unless user}}
-         <li class="nav-item">
+          {{#unless user}}
+          <li class="nav-item">
             <a class="nav-link active" aria-current="page" href="/auth/signup" class="text-info">Sign up</a>
           </li>
           <li class="nav-item">
@@ -34,16 +34,16 @@
           </li>
           {{/unless}}
           {{#if user}}
-         
+
           <li class="nav-item">
             <a class="nav-link" href="/auth/logout" class="text-info">Logout</a>
           </li>
           <li class="nav-item">
             <a class="nav-link" href="/auth/profile" class="text-info">Profile</a>
           </li>
-           <li class="nav-item">
-             {{#if user}}<p>hi {{user.username}}😂</p> {{/if}}
-          </li>
+          {{!-- <li class="nav-item">
+            {{#if user}}<p>hi {{user.username}}😂</p> {{/if}}
+          </li> --}}
           {{/if}}
         </ul>
         <form class="d-flex" role="search" action="/search" method="POST">
@@ -63,22 +63,19 @@
   <footer class="text-center text-black bg-light">
     <div class="container p-4 pb-0">
       <section class="">
-        <p class="d-flex justify-content-center align-items-left">
-          <span class="me-3">Emily's Fav Restaurant</span>
-          <a type="button" class="btn btn-outline-light btn-rounded"
-            href="https://www.instagram.com/pipatthecarriage">Pips</a>
-        </p>
-      </section>
-      <section class="">
         <p class="d-flex justify-content-center align-items-center">
           <span class="me-3">Register for free</span>
-          <a type="button" class="btn btn-outline-light btn-rounded" href="/auth/signup">Sign up!</a>
+          <a type="button" class="btn btn-outline-dark btn-rounded" href="/auth/signup">Sign up!</a>
         </p>
       </section>
     </div>
     <div class="text-center p-3">
       © 2020 Copyright:
-      <a class="text-white" href="https://guide.michelin.com/gb/en">guide.michelin.com</a>
+      <a class="text-black" href="https://guide.michelin.com/gb/en" target="_blank">guide.michelin.com</a>
+    </div>
+    <div>
+      <a href="https://www.instagram.com/pipatthecarriage" class="me-4 text-reset" target="_blank">
+            Emily's Fav Restaurant</a>
     </div>
   </footer>
 </body>
