@@ -38,9 +38,7 @@
           <li class="nav-item">
             <a class="nav-link" href="/auth/logout" class="text-info">Logout</a>
           </li>
-          <li class="nav-item">
-            <a class="nav-link" href="/auth/profile" class="text-info">Profile</a>
-          </li>
+
           {{!-- <li class="nav-item">
             {{#if user}}<p>hi {{user.username}}😂</p> {{/if}}
           </li> --}}
@@ -61,6 +59,7 @@
 
   <br>
   <footer class="text-center text-black bg-light">
+    {{#unless user}}
     <div class="container p-4 pb-0">
       <section class="">
         <p class="d-flex justify-content-center align-items-center">
@@ -69,6 +68,7 @@
         </p>
       </section>
     </div>
+    {{/unless}}
     <div class="text-center p-3">
       © 2020 Copyright:
       <a class="text-black" href="https://guide.michelin.com/gb/en" target="_blank">guide.michelin.com</a>
