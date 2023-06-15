@@ -22,22 +22,26 @@
           <li class="nav-item">
             <a class="nav-link active" aria-current="page" href="/" class="text-info">Home</a>
           </li>
-          <li class="nav-item">
+         {{!-- {{#if currentUser}} --}}
+         <li class="nav-item">
             <a class="nav-link active" aria-current="page" href="/auth/signup" class="text-info">Sign up</a>
           </li>
           <li class="nav-item">
             <a class="nav-link" href="/auth/login" class="text-info">Login</a>
           </li>
+          {{!-- {{else}} --}}
           <li class="nav-item">
             <a class="nav-link" href="/auth/logout" class="text-info">Logout</a>
           </li>
           <li class="nav-item">
             <a class="nav-link" href="/auth/profile" class="text-info">Profile</a>
           </li>
+          
+          {{!-- {{/if}} --}}
         </ul>
         <form class="d-flex" role="search" action="/search" method="POST">
           <input class="form-control me-2" type="search" name="search" placeholder="Search" aria-label="Search">
-          <button class="btn btn-outline-success" type="submit">Search</button>
+          <button class="btn btn-outline-light" type="submit">Search</button>
         </form>
       </div>
   </nav>
@@ -47,29 +51,29 @@
   {{{body}}}
 
   <br>
-  <section class="">
-    <br>
-    <footer class="text-center text-white" style="background-color: #0a4275;">
-      <div class="container p-4 pb-0">
-        <section class="">
-          <p class="d-flex justify-content-center align-items-left">
-            <span class="me-3">Emily's Fav Restaurant</span>
-            <a type="button" class="btn btn-outline-light btn-rounded" href="https://www.instagram.com/pipatthecarriage">Pips</a>
-          </p>
-        </section>
-        <section class="">
-          <p class="d-flex justify-content-center align-items-center">
-            <span class="me-3">Register for free</span>
-            <a type="button" class="btn btn-outline-light btn-rounded" href="/auth/signup">Sign up!</a>
-          </p>
-        </section>
-      </div>
-      <div class="text-center p-3" style="background-color: rgba(0, 0, 0, 0.2);">
-        © 2020 Copyright:
-        <a class="text-white" href="https://guide.michelin.com/gb/en">guide.michelin.com</a>
-      </div>
-    </footer>
-  </section>
+
+  <br>
+  <footer class="text-center text-white" style="background-color: #0a4275;">
+    <div class="container p-4 pb-0">
+      <section class="">
+        <p class="d-flex justify-content-center align-items-left">
+          <span class="me-3">Emily's Fav Restaurant</span>
+          <a type="button" class="btn btn-outline-light btn-rounded"
+            href="https://www.instagram.com/pipatthecarriage">Pips</a>
+        </p>
+      </section>
+      <section class="">
+        <p class="d-flex justify-content-center align-items-center">
+          <span class="me-3">Register for free</span>
+          <a type="button" class="btn btn-outline-light btn-rounded" href="/auth/signup">Sign up!</a>
+        </p>
+      </section>
+    </div>
+    <div class="text-center p-3" style="background-color: rgba(0, 0, 0, 0.2);">
+      © 2020 Copyright:
+      <a class="text-white" href="https://guide.michelin.com/gb/en">guide.michelin.com</a>
+    </div>
+  </footer>
 </body>
 
 </html>
