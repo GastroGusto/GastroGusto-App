@@ -12,8 +12,9 @@
 
 <body>
 
- {{#if user}}<h1>hi 😂</h1> {{/if}}
-  <nav class="navbar navbar-expand-lg navbar-dark" style="background-color: #0a4275;">
+
+  <nav class="navbar navbar-expand-lg navbar-light">
+    <img src="/images/bwlogo.png" width="100px">
     <div class="container-fluid">
       <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" #navbarNav>
         <span class="navbar-toggler-icon"></span>
@@ -33,13 +34,16 @@
           </li>
           {{/unless}}
           {{#if user}}
+         
           <li class="nav-item">
             <a class="nav-link" href="/auth/logout" class="text-info">Logout</a>
           </li>
           <li class="nav-item">
             <a class="nav-link" href="/auth/profile" class="text-info">Profile</a>
           </li>
-          
+           <li class="nav-item">
+             {{#if user}}<p>hi {{user.username}}😂</p> {{/if}}
+          </li>
           {{/if}}
         </ul>
         <form class="d-flex" role="search" action="/search" method="POST">
@@ -56,7 +60,7 @@
   <br>
 
   <br>
-  <footer class="text-center text-white" style="background-color: #0a4275;">
+  <footer class="text-center text-black bg-light">
     <div class="container p-4 pb-0">
       <section class="">
         <p class="d-flex justify-content-center align-items-left">
@@ -72,7 +76,7 @@
         </p>
       </section>
     </div>
-    <div class="text-center p-3" style="background-color: rgba(0, 0, 0, 0.2);">
+    <div class="text-center p-3">
       © 2020 Copyright:
       <a class="text-white" href="https://guide.michelin.com/gb/en">guide.michelin.com</a>
     </div>

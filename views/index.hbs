@@ -9,10 +9,18 @@
 				</p>
 				<p class='lead'>Who is going to collect them all?
 				</p>
-				<p><a href='#' class='btn btn-primary shadow mr-2'>Discover more</a><a
-						href='#'
-						class='btn btn-outline-primary'
-					>Sign Up</a></p>
+				{{#if user}}
+					<p><a href='#' class='btn btn-primary shadow mr-2'>Discover more</a><a
+							href='#'
+							class='btn btn-outline-primary'
+						>3 stars just for {{user.username}}!</a></p>
+				{{/if}}
+				{{#unless user}}
+					<p><a href='#' class='btn btn-primary shadow mr-2'>Discover more</a><a
+							href='#'
+							class='btn btn-outline-primary'
+						>Sign Up</a></p>
+				{{/unless}}
 			</div>
 			<div class='col-lg-6 order-1 order-lg-2'><img
 					src='images/fp1.png'
