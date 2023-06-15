@@ -47,3 +47,11 @@ nav a:last-child {
 
 }
 
+#spacing-fp {
+  padding-top: 10rem!important;
+}
+
+.jumbotron {
+  background: url("/images/car-image1.jpg") no-repeat center;
+}
+
