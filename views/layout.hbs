@@ -14,7 +14,7 @@
 
 
   <nav class="navbar navbar-expand-lg navbar-light">
-    <img src="/images/bwlogo.png" class="ml-1" width="100px">
+    <img src="/images/bwlogo.png" class="px-3" width="100px">
     <div class="container-fluid">
       <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
         <span class="navbar-toggler-icon"></span>
@@ -24,6 +24,15 @@
         <ul class="navbar-nav me-auto mb-2 mb-lg-0">
           <li class="nav-item">
             <a class="nav-link active" aria-current="page" href="/" class="text-info">Home</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link active" aria-current="page" href="/restaurants/tag/locations" class="text-info">Berlin Food</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link active" aria-current="page" href="/restaurants/tag/award/star" class="text-info">Michelin Stars</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link active" aria-current="page" href="/restaurants/64871918ea8142d510e0e8ef" class="text-info">Restaurant of the Week</a>
           </li>
           {{#unless user}}
           <li class="nav-item">
@@ -36,14 +45,11 @@
           {{#if user}}
 
           <li class="nav-item">
-            <a class="nav-link" href="/auth/logout" class="text-info">Logout</a>
+            <a class="nav-link active" aria-current="page" href="/auth/logout" class="text-info">Logout</a>
           </li>
-
-          {{!-- <li class="nav-item">
-            {{#if user}}<p>hi {{user.username}}😂</p> {{/if}}
-          </li> --}}
           {{/if}}
         </ul>
+        {{#if user}}<p class="px-5">hi {{user.username}}😂</p> {{/if}}
         <form class="d-flex" role="search" action="/search" method="POST">
           <input class="form-control me-2" type="search" name="search" placeholder="Search" aria-label="Search">
           <button class="btn btn-outline-light" type="submit">Search</button>

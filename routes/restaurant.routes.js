@@ -99,7 +99,10 @@ router.post('/restaurants/reviews/:reviewid', isLoggedIn, (req, res, next) => {
 		.catch((error) => next(error));
 });
 
-router.post('/restaurants/reviews/:reviewid/delete', isLoggedIn, (req, res, next) => {
+router.post(
+	'/restaurants/reviews/:reviewid/delete',
+	isLoggedIn,
+	(req, res, next) => {
 		const { reviewid } = req.params;
 		reviewModel
 			.findById(reviewid)
@@ -137,6 +140,7 @@ router.get('/restaurants/tag/:type/:resttag', (req, res, next) => {
 	const filterTag = new RegExp(resttag, 'i');
 
 	Restaurant.find({ [filterType]: { $regex: filterTag } })
+		.populate('Review')
 		.then((restaurantsFromDb) => {
 			res.render('restaurants/tag', { data: restaurantsFromDb });
 		})
@@ -174,7 +178,7 @@ router.post('/search', (req, res) => {
 	Restaurant.find({ Name: { $regex: searchParam } })
 		.then((restaurantsFromDb) => {
 			console.log(restaurantsFromDb);
-			res.render('restaurants/search', {restaurants: restaurantsFromDb});
+			res.render('restaurants/search', { restaurants: restaurantsFromDb });
 		})
 		.catch((e) => {
 			console.log('error getting restaurant details from DB', e);
