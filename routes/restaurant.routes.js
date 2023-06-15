@@ -137,9 +137,9 @@ router.post(
 router.get('/restaurants/tag/:type/:resttag', (req, res, next) => {
 	const { resttag, type } = req.params;
 	const filterType = type.charAt(0).toUpperCase() + type.slice(1);
-	const filterTag = resttag.charAt(0).toUpperCase() + resttag.slice(1);
+	const filterTag = new RegExp(resttag, 'i');
 
-	Restaurant.find({ [filterType]: filterTag })
+	Restaurant.find({ [filterType]: { $regex: filterTag } })
 		.then((restaurantsFromDb) => {
 			res.render('restaurants/tag', { data: restaurantsFromDb });
 		})
