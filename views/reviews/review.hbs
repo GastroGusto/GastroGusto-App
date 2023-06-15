@@ -1,16 +1,13 @@
-
-
+<div id="review-form d-flex justify-content-center" ></div>
 <h3>Tell us how was your experience at this restaurant:</h3>
-<form method="POST" action="/restaurants/{{_id}}/review">
-<label>Title:</label>
-<input type='text' name="title" required />
-<label>Comment:</label>
-<textarea type="text" name="comment" cols="30" rows="4" required></textarea>
-<label>Rating:</label>
-<input type="range" name="rating" min="1" max="5" step="1" required/>
-<button type="submit">Review</button>
+<form class='row w-50 ml-50' method='POST' action='/restaurants/{{_id}}/review'>
+	<label>Title:</label>
+	<input type='text' name='title' class="border border-primary" required />
+	<label>Comment:</label>
+	<textarea type='text' name='comment' cols='30' rows='4' class="border border-primary" required></textarea>
+	<label>Rating:</label>
+	<input type='range' name='rating' min='1' max='5' step='1' class="border border-primary" required />
+	<button type='submit' class='btn btn-primary'>Review</button>
 
 </form>
-
-
-
+</div>
