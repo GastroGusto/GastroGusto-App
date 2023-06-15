@@ -174,7 +174,7 @@ router.post('/search', (req, res) => {
 	Restaurant.find({ Name: { $regex: searchParam } })
 		.then((restaurantsFromDb) => {
 			console.log(restaurantsFromDb);
-			res.render('restaurants/search', restaurantsFromDb);
+			res.render('restaurants/search', {restaurants: restaurantsFromDb});
 		})
 		.catch((e) => {
 			console.log('error getting restaurant details from DB', e);

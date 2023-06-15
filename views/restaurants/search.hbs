@@ -1,6 +1,6 @@
 <div class="container text-center">
   <div class="row">
-		{{#each this}}
+		{{#each restaurants}}
 			<div class="product col-12 col-md-4 mb-4">
       <div class="card h-100">
 					<h4 class='card-title'>{{Name}}</h4>
@@ -16,27 +16,3 @@
 		{{/each}}
 	</div>
 </div>
-
-{{!-- <div class="container text-center">
-  <div class="row">
-    {{#each Review}}
-    <div class="product col-12 col-md-4 mb-4">
-      <div class="card h-100">
-        <div class="card-header h-100">
-          <h4>{{title}}</h4>
-          <div class="card-body h-100">
-            <h5 class="card-title text-center">Reviewed by: {{username.username}}</h5>
-            <p class="card-text text-center">{{comment}}</p>
-            <p class="card-text text-center">Rating: {{rating}}</p>
-            <a href="/restaurants/reviews/{{_id}}" type="button text center" class="btn btn-dark"
-              style="background-color: #0a4275;">Edit Review</a>
-            <form action="/restaurants/reviews/{{_id}}/delete" method="POST">
-              <button class="btn btn-dark" style="background-color: #0a4275;">Delete</button>
-            </form>
-          </div>
-        </div>
-      </div>
-    </div>
-    {{/each}}
-  </div>
-</div> --}}
