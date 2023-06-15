@@ -1,18 +1,21 @@
 <div class="container text-center">
   <div class="row">
-		{{#each restaurants}}
-			<div class="product col-12 col-md-4 mb-4">
-      <div class="card h-100">
-					<h4 class='card-title'>{{Name}}</h4>
-					<h5 class='card-title'>{{Award}}</h5>
-					<h6 class='card-subtitle mb-2 text-body-secondary'>Cuisine:
-						{{Cuisine}}</h6>
-					<p class='card-text'>Price: {{Location}}</p>
-					<p class='card-text'>Location: {{Location}}</p>
-					<a href='/restaurants/{{_id}}' class='card-link'>More Details</a>
-					<a href='{{WebsiteUrl}}' class='card-link'>Official Website</a>
-				</div>
-			</div>
-		{{/each}}
-	</div>
+    {{#each restaurants}}
+    <div class="product col-12 col-md-4 mb-4">
+      <div class="h-100 shadow p-3 mb-5 bg-white rounded">
+        <h4 class='card-title'>{{Name}}</h4>
+        <h5 class='card-title'>{{Award}}</h5>
+        <h6 class='card-subtitle mb-2 text-body-secondary'>Cuisine:
+          {{Cuisine}}</h6>
+        <p class='card-text'>Price: {{Location}}</p>
+        <p class='card-text'>Location: {{Location}}</p>
+        <div class="card-text text center">
+          <a href='/restaurants/{{_id}}' class='card-link'>More Details</a>
+          <a href='{{WebsiteUrl}}' class='card-link'>Official Website</a>
+        </div>
+      </div>
+    </div>
+    {{/each}}
+  </div>
 </div>
+
