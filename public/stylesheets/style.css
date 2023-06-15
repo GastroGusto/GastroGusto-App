@@ -24,7 +24,6 @@ nav {
 
 nav a {
   padding: 0 1rem;
-  border-right: 1px solid #48759e;
 }
 
 nav a:last-child {

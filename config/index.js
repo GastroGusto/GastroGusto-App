@@ -63,4 +63,11 @@ module.exports = (app) => {
 			}),
 		})
 	);
+	app.use((req, res, next) => {
+		if(req.session.currentUser){
+			res.locals.user = req.session.currentUser
+		}
+		next()
+	})
 };
+
