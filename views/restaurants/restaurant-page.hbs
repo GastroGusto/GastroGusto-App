@@ -88,13 +88,9 @@
 						<div class='product-body h-100'>
 							<h5 class='product-title text-center'>Reviewed by:
 								{{username.username}}</h5>
+							<img src='/images/review/{{rating}}.png' />
 							<p class='product-text text-center'>{{comment}}</p>
-							<p
-								id='multi10'
-								onload='michelinRange()'
-								class='product-text text-center'
-							>Rating:
-								{{userstarsystem}}{{rating}}{{userstarsystem}}</p>
+
 							<a
 								href='/restaurants/reviews/{{_id}}'
 								type='button text center'
