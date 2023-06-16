@@ -1,5 +1,5 @@
 <div class='container'>
-	<h3>Edit the review: "{{title}}"</h3>
+	<h3>Edit the review:</h3>
 	<form method='POST' action='/restaurants/reviews/{{_id}}'>
 
 		<div class='form-outline mb-4'>
@@ -20,10 +20,13 @@
 				name='comment'
 				id='form4Example3'
 				rows='4'
+				required
 			>{{comment}}</textarea>
 			<label class='form-label' for='form4Example3'></label>
 		</div>
-
+		<div class='imagechange'>
+			<img src='images/range-slider/0.jpg' id='imgchange' />
+		</div>
 		<div>
 			<label for='multi-range-field' class='form-label'></label>
 			<input

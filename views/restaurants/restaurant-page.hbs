@@ -90,15 +90,19 @@
 								{{username.username}}</h5>
 							<img src='/images/review/{{rating}}.png' />
 							<p class='product-text text-center'>{{comment}}</p>
-
-							<a
-								href='/restaurants/reviews/{{_id}}'
-								type='button text center'
-								class='btn btn-outline-primary'
-							>Edit Review</a>
-							<form action='/restaurants/reviews/{{_id}}/delete' method='POST'>
-								<button class='btn btn-outline-primary'>Delete</button>
-							</form>
+							{{#compare username.username '==' ../user.username}}
+								<a
+									href='/restaurants/reviews/{{_id}}'
+									type='button text center'
+									class='btn btn-outline-primary'
+								>Edit Review</a>
+								<form
+									action='/restaurants/reviews/{{_id}}/delete'
+									method='POST'
+								>
+									<button class='btn btn-outline-primary'>Delete</button>
+								</form>
+							{{/compare}}
 						</div>
 					</div>
 				</div>
