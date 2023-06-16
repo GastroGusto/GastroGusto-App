@@ -134,7 +134,7 @@ router.post("/login", isLoggedOut, (req, res, next) => {
           // Remove the password field
           delete req.session.currentUser.password;
 
-          res.redirect("/auth/profile");
+          res.redirect("/");
         })
         .catch((err) => next(err)); // In this case, we send error handling to the error handling middleware.
     })
@@ -152,13 +152,6 @@ router.get("/logout", isLoggedIn, (req, res) => {
     res.redirect("/");
   });
 });
- 
-//User profile page
-router.get('/profile', (req, res) => {
 
-  req.session.currentUser
-
-   res.render("auth/profile", {userDetails: req.session.currentUser});
-});
 
 module.exports = router;
