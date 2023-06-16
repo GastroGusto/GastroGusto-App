@@ -1,4 +1,5 @@
 # GastroGusto
+## Brought to you by Pedro Paulos and Emily Stevenson
 
 This our second Ironhack project, an app that allows you to review your favourite Michelin Star Restaurants. We have access to a *HUGE* database for all current restaurants included in the Michelin Guide. 
 
