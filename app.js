@@ -32,9 +32,97 @@ const authRoutes = require('./routes/auth.routes');
 app.use('/auth', authRoutes);
 
 const restaurantRoutes = require('./routes/restaurant.routes');
+const RestaurantModel = require('./models/Restaurant.model');
 app.use('/', restaurantRoutes);
 
 // ❗ To handle errors. Routes that don't exist or errors that you handle in specific routes
 require('./error-handling')(app);
+
+hbs.registerHelper('starsystem', function (text) {
+	if (text.fn(this).includes('Bib Gourmand')) {
+		return new hbs.SafeString('<img src="../../../images/range-slider/1.png">');
+	} else if (text.fn(this).includes('1 MICHELIN Star')) {
+		return new hbs.SafeString('<img src="../../../images/range-slider/2.png">');
+	} else if (text.fn(this).includes('2 MICHELIN Stars')) {
+		return new hbs.SafeString('<img src="../../../images/range-slider/3.png">');
+	} else if (text.fn(this).includes('3 MICHELIN Stars')) {
+		return new hbs.SafeString('<img src="../../../images/range-slider/4.png">');
+	}
+});
+
+// hbs.registerHelper('userstarsystem', function (text) {
+// 	console.log(text);
+// 	Restaurant.find({ Name: text.name }).populate('Review');
+// 	then((data) => {
+// 		console.log(data);
+// 	});
+// 		if (text.fn(this).includes('1')) {
+// 			return new hbs.SafeString('<img src="../../../images/range-slider/1.png">');
+// 		} else if (text.fn(this).includes('2')) {
+// 			return new hbs.SafeString('<img src="../../../images/range-slider/2.png">');
+// 		} else if (text.fn(this).includes('3')) {
+// 			return new hbs.SafeString('<img src="../../../images/range-slider/3.png">');
+// 		} else if (text.fn(this).includes('4')) {
+// 			return new hbs.SafeString('<img src="../../../images/range-slider/4.png">');
+// 		}
+// });
+
+hbs.registerHelper('compare', function (lvalue, operator, rvalue, options) {
+	var operators, result;
+	console.log(`${lvalue} and ${rvalue}`);
+	if (arguments.length < 3) {
+		throw new Error("Handlerbars Helper 'compare' needs 2 parameters");
+	}
+
+	if (options === undefined) {
+		options = rvalue;
+		rvalue = operator;
+		operator = '===';
+	}
+
+	operators = {
+		'==': function (l, r) {
+			return l == r;
+		},
+		'===': function (l, r) {
+			return l === r;
+		},
+		'!=': function (l, r) {
+			return l != r;
+		},
+		'!==': function (l, r) {
+			return l !== r;
+		},
+		'<': function (l, r) {
+			return l < r;
+		},
+		'>': function (l, r) {
+			return l > r;
+		},
+		'<=': function (l, r) {
+			return l <= r;
+		},
+		'>=': function (l, r) {
+			return l >= r;
+		},
+		typeof: function (l, r) {
+			return typeof l == r;
+		},
+	};
+
+	if (!operators[operator]) {
+		throw new Error(
+			"Handlerbars Helper 'compare' doesn't know the operator " + operator
+		);
+	}
+
+	result = operators[operator](lvalue, rvalue);
+
+	if (result) {
+		return options.fn(this);
+	} else {
+		return options.inverse(this);
+	}
+});
 
 module.exports = app;
