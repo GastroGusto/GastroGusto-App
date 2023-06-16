@@ -55,7 +55,9 @@
 		>
 			<div class='ms-2 me-auto'>
 				<div class='fw-bold'>Award:</div>
-				{{Award}}
+				{{#starsystem}}
+					{{Award}}
+				{{/starsystem}}
 			</div>
 		</li>
 		<li
@@ -87,8 +89,12 @@
 							<h5 class='product-title text-center'>Reviewed by:
 								{{username.username}}</h5>
 							<p class='product-text text-center'>{{comment}}</p>
-							<p id='rating-img' class='product-text text-center'>Rating:
-								{{rating}}</p>
+							<p
+								id='multi10'
+								onload='michelinRange()'
+								class='product-text text-center'
+							>Rating:
+								{{userstarsystem}}{{rating}}{{userstarsystem}}</p>
 							<a
 								href='/restaurants/reviews/{{_id}}'
 								type='button text center'

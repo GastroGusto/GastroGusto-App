@@ -32,9 +32,39 @@ const authRoutes = require('./routes/auth.routes');
 app.use('/auth', authRoutes);
 
 const restaurantRoutes = require('./routes/restaurant.routes');
+const RestaurantModel = require('./models/Restaurant.model');
 app.use('/', restaurantRoutes);
 
 // ❗ To handle errors. Routes that don't exist or errors that you handle in specific routes
 require('./error-handling')(app);
+
+hbs.registerHelper('starsystem', function (text) {
+	if (text.fn(this).includes('Bib Gourmand')) {
+		return new hbs.SafeString('<img src="../../../images/range-slider/1.png">');
+	} else if (text.fn(this).includes('1 MICHELIN Star')) {
+		return new hbs.SafeString('<img src="../../../images/range-slider/2.png">');
+	} else if (text.fn(this).includes('2 MICHELIN Stars')) {
+		return new hbs.SafeString('<img src="../../../images/range-slider/3.png">');
+	} else if (text.fn(this).includes('3 MICHELIN Stars')) {
+		return new hbs.SafeString('<img src="../../../images/range-slider/4.png">');
+	}
+});
+
+// hbs.registerHelper('userstarsystem', function (text) {
+// 	console.log(text);
+// 	Restaurant.find({ Name: text.name }).populate('Review');
+// 	then((data) => {
+// 		console.log(data);
+// 	});
+// 		if (text.fn(this).includes('1')) {
+// 			return new hbs.SafeString('<img src="../../../images/range-slider/1.png">');
+// 		} else if (text.fn(this).includes('2')) {
+// 			return new hbs.SafeString('<img src="../../../images/range-slider/2.png">');
+// 		} else if (text.fn(this).includes('3')) {
+// 			return new hbs.SafeString('<img src="../../../images/range-slider/3.png">');
+// 		} else if (text.fn(this).includes('4')) {
+// 			return new hbs.SafeString('<img src="../../../images/range-slider/4.png">');
+// 		}
+// });
 
 module.exports = app;

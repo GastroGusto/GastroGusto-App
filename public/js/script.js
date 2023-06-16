@@ -1,7 +1,3 @@
-//setvalue.innerHTML = rangevalue.value;
-//console.log(rangevalue.value)
-
-//Now will use oninput event.
 function michelinRange() {
 	let rangevalue = document.getElementById('multi10');
 	let setvalue = document.getElementById('rangevalue');

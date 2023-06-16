@@ -1,20 +1,23 @@
-<div class="container text-center">
-	<div class="row">
+<div class='container text-center'>
+	<div class='row'>
 		{{#each data}}
-		<div class="product col-12 col-md-4 mb-4">
-			<div class="h-100 shadow p-3 mb-5 bg-white rounded">
-				<h4 class='card-title'>{{Name}}</h4>
-				<h5 class='card-title'>{{Award}}</h5>
-				<h6 class='card-subtitle mb-2 text-body-secondary'>Cuisine:
-					{{Cuisine}}</h6>
-				<p class='card-text'>Price: {{Location}}</p>
-				<p class='card-text'>Location: {{Location}}</p>
-				<div class="card-text text center">
-					<a href='/restaurants/{{_id}}' class='card-link'>More Details</a>
-					<a href='{{WebsiteUrl}}' class='card-link'>Official Website</a>
+			<div class='product col-12 col-md-4 mb-4'>
+				<div class='h-100 shadow p-3 mb-5 bg-white rounded'>
+					<h4 class='card-title'>{{Name}}</h4>
+					<h5 id='star-id' class='card-title'>{{#starsystem}}
+							{{Award}}
+						{{/starsystem}}</h5>
+					<h6 class='card-subtitle mb-2 text-body-secondary'>Cuisine:
+						{{Cuisine}}</h6>
+					<p class='card-text'>Price: {{Location}}</p>
+					<p class='card-text'>Location: {{Location}}</p>
+					<div class='card-text text center'>
+						<a href='/restaurants/{{_id}}' class='card-link'>More Details</a>
+						<a href='{{WebsiteUrl}}' class='card-link'>Official Website</a>
+					</div>
 				</div>
 			</div>
-		</div>
 		{{/each}}
 	</div>
 </div>
+<script src='/../js/script.js'></script>
