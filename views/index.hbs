@@ -1,4 +1,4 @@
-<section id='spacing-fp' class='pt-5'>
+<section id='spacing-fp pt-3'>
 	<div class='container'>
 		<div class='row'>
 			<div class='col-lg-6 order-2 order-lg-1'>
@@ -11,17 +11,17 @@
 				</p>
 				{{#if user}}
 					<p><a
-							href='http://localhost:3016/restaurants/tag/Cuisine/Modern'
+							href='/restaurants/tag/Cuisine/Modern'
 							class='btn btn-primary shadow mr-2'
 						>Discover more</a><a
-							href='http://localhost:3016/restaurants/tag/award/3'
+							href='/restaurants/tag/award/3'
 							class='btn btn-outline-primary'
 						>3 stars just for
 							{{user.username}}!</a></p>
 				{{/if}}
 				{{#unless user}}
 					<p><a
-							href='http://localhost:3016/restaurants/tag/award/3'
+							href='/restaurants/tag/award/3'
 							class='btn btn-primary shadow mr-2'
 						>Discover more</a><a
 							href='/auth/signup'
@@ -151,8 +151,8 @@
 <br />
 <header class='jumbotron jumbotron-fluid mt-5'>
 	<div class='container-fluid text-center text-white'>
-		<h1 class='display-3 mt-5'>Japan</h1>
-		<p class='lead pb-4'>Much more than sushi.</p>
+		<h1 class='display-3 mt-5 text center'>Japan</h1>
+		<p class='lead pb-4 text center'>Much more than just Sushi.</p>
 		<p><a
 				href='/restaurants/tag/location/japan'
 				class='btn btn-primary btn-lg mb-5'
