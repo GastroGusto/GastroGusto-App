@@ -39,6 +39,7 @@ app.use('/', restaurantRoutes);
 require('./error-handling')(app);
 
 hbs.registerHelper('starsystem', function (text) {
+	console.log(text);
 	if (text.fn(this).includes('Bib Gourmand')) {
 		return new hbs.SafeString('<img src="../../../images/range-slider/1.png">');
 	} else if (text.fn(this).includes('1 MICHELIN Star')) {
@@ -49,23 +50,6 @@ hbs.registerHelper('starsystem', function (text) {
 		return new hbs.SafeString('<img src="../../../images/range-slider/4.png">');
 	}
 });
-
-// hbs.registerHelper('userstarsystem', function (text) {
-// 	console.log(text);
-// 	Restaurant.find({ Name: text.name }).populate('Review');
-// 	then((data) => {
-// 		console.log(data);
-// 	});
-// 		if (text.fn(this).includes('1')) {
-// 			return new hbs.SafeString('<img src="../../../images/range-slider/1.png">');
-// 		} else if (text.fn(this).includes('2')) {
-// 			return new hbs.SafeString('<img src="../../../images/range-slider/2.png">');
-// 		} else if (text.fn(this).includes('3')) {
-// 			return new hbs.SafeString('<img src="../../../images/range-slider/3.png">');
-// 		} else if (text.fn(this).includes('4')) {
-// 			return new hbs.SafeString('<img src="../../../images/range-slider/4.png">');
-// 		}
-// });
 
 hbs.registerHelper('compare', function (lvalue, operator, rvalue, options) {
 	var operators, result;

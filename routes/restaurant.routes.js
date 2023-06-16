@@ -149,24 +149,6 @@ router.get('/restaurants/tag/:type/:resttag', (req, res, next) => {
 		});
 });
 
-router.get('/restaurants/filter/:type/', (req, res, next) => {
-	const { type } = req.params;
-	const filterType = type.charAt(0).toUpperCase() + type.slice(1);
-
-	Restaurant.find()
-		.distinct(filterType)
-		.then((restaurantsFromDb) => {
-			const restaurantObj = Object.fromEntries(
-				restaurantsFromDb.map((key) => [key, 0])
-			);
-			console.log(restaurantObj);
-			res.render('restaurants/unique-filter', restaurantObj);
-		})
-		.catch((e) => {
-			console.log('error getting restaurant details from DB', e);
-		});
-});
-
 router.get('/search', (req, res) => {
 	res.render('restaurants/search');
 });
@@ -174,10 +156,9 @@ router.get('/search', (req, res) => {
 router.post('/search', (req, res) => {
 	const { search } = req.body;
 	const searchParam = new RegExp(search, 'i');
-	console.log(search);
+
 	Restaurant.find({ Name: { $regex: searchParam } })
 		.then((restaurantsFromDb) => {
-			console.log(restaurantsFromDb);
 			res.render('restaurants/search', { restaurants: restaurantsFromDb });
 		})
 		.catch((e) => {
