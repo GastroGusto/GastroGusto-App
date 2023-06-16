@@ -12,11 +12,10 @@
 
 <body>
 
-
   <nav class="navbar navbar-expand-lg navbar-light">
     <img src="/images/bwlogo.png" class="px-3" width="100px">
     <div class="container-fluid">
-      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+      <button class="navbar-toggler" role="navigation" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
         <span class="navbar-toggler-icon"></span>
       </button>
       <div class="collapse navbar-collapse" id="navbarNav" aria-controls="navbarNav" aria-expanded="false"
@@ -32,14 +31,14 @@
             <a class="nav-link active" aria-current="page" href="/restaurants/tag/award/star" class="text-info">Michelin Stars</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link active" aria-current="page" href="/restaurants/64871918ea8142d510e0e8ef" class="text-info">Restaurant of the Week</a>
+            <a class="nav-link active" aria-current="page" href="/restaurants/64871918ea8142d510e0e8f1" class="text-info">Restaurant of the Week</a>
           </li>
           {{#unless user}}
           <li class="nav-item">
             <a class="nav-link active" aria-current="page" href="/auth/signup" class="text-info">Sign up</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="/auth/login" class="text-info">Login</a>
+            <a class="nav-link active" aria-current="page" href="/auth/login" class="text-info">Login</a>
           </li>
           {{/unless}}
           {{#if user}}
@@ -49,14 +48,13 @@
           </li>
           {{/if}}
         </ul>
-        {{#if user}}<p class="px-5">hi {{user.username}}😂</p> {{/if}}
+        {{#if user}}<p class="px-5">Hi {{user.username}} 😂</p> {{/if}}
         <form class="d-flex" role="search" action="/search" method="POST">
           <input class="form-control me-2" type="search" name="search" placeholder="Search" aria-label="Search">
           <button class="btn btn-outline-light" type="submit">Search</button>
         </form>
       </div>
   </nav>
-
 
 
   {{{body}}}
